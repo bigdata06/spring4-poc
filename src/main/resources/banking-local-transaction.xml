@@ -1,0 +1,46 @@
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+&lt;!&ndash;
+    Repository and Service layers
+&ndash;&gt;
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<bean id="BankingTransactionInterceptor"
+	class="org.springframework.transaction.interceptor.TransactionInterceptor">
+	<property name="transactionManager" ref="myTransactionManager"/>
+	<property name="transactionAttributeSource" ref="matchAllMethods"/>
+</bean>
+
+<bean id="matchAllMethods"
+	class="org.springframework.transaction.interceptor.MatchAlwaysTransactionAttributeSource"/>
+
+  
+<bean id="transactionProxyCreator"
+	class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+	<property name="beanNames">
+		<list>
+			<idref bean="TransferFacade"/> &lt;!&ndash; One of these for each POJO &ndash;&gt;
+		</list>
+	</property>	
+	<property name="interceptorNames">
+		<list>
+			<idref bean="BankingTransactionInterceptor"/>
+		</list>
+	</property>
+</bean>
+
+<bean id="myTransactionManager"
+	class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	<property name="sessionFactory" ref="mySessionFactory"/>
+</bean>
+
+
+
+</beans>
+-->
