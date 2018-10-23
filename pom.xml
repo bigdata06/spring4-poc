@@ -306,11 +306,13 @@
             <version>${aspectj.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>9.3.0.M1</version>
-        </dependency>
+       <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
+<dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-server</artifactId>
+    <version>9.4.12.v20180830</version>
+</dependency>
+
 
 
 
